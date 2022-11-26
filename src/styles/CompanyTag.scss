@@ -1,0 +1,13 @@
+.company-tag {
+  // word-break: keep-all;
+  display: inline-block;
+  width: fit-content;
+  background-color: lightgray;
+  text-align: center;
+  font-size: 0.9em;
+  padding: 0.2em;
+
+  &+.company-tag {
+    margin-inline-start: 0.2em;
+  }
+}

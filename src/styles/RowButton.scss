@@ -1,0 +1,12 @@
+.row-button {
+  color: black;
+  cursor: pointer;
+
+  &.green {
+    color: green;
+  }
+
+  &.red {
+    color: red;
+  }
+}

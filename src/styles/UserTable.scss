@@ -1,0 +1,83 @@
+.users-table {
+  $border: 1px solid black;
+  border: $border;
+  width: 100%;
+  font-size: 14px;
+
+  .tbody {
+    &.filters-tbody {
+      height: 3em;
+      background-color: rgb(237, 237, 243);
+
+      .row {
+        height: 100%;
+      }
+
+      .dropdown-choices {
+        z-index: 3;
+      }
+    }
+
+    &.users-tbody {
+      .dropdown-choices {
+        z-index: 2;
+      }
+
+      .row {
+        min-height: 2em;
+      }
+    }
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 11% 16% 7.5% 35% 12% 11% 7.5%;
+    position: relative;
+
+    .edit-row {
+      width: 100%;
+      position: absolute;
+      background-color: white;
+    }
+  }
+
+  .row:first-child,
+  .row+.row {
+    border-top: $border;
+  }
+
+  .header,
+  .cell {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .header {
+    background-color: #222;
+    color: white;
+    text-transform: capitalize;
+    padding: 0.5em;
+    text-align: center;
+  }
+
+  .cell {
+    border-left: 1px solid black;
+    padding: 0.1em;
+    text-align: center;
+    word-break: break-word;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  select:disabled {
+    appearance: none;
+    background-color: transparent;
+    color: inherit;
+    border: 0;
+  }
+}
