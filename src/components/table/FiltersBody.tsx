@@ -5,6 +5,7 @@ import TextFilter from "../filters/TextFilter.jsx";
 import UnsetFiltersButton from "../filters/UnsetFiltersButton.jsx";
 import { defaultChoice } from "../../constants/misc.js";
 import CompanyDropdown, { getCompanyDropdownFilterBehavior, initAsCompanyFilter } from "src/components/dropdowns/company/CompanyDropdown.jsx";
+import { makeDeactivable } from "../dropdowns/Dropdown.jsx";
 
 export default function FiltersBody({ usersService }: {
   usersService: UsersService;
@@ -25,22 +26,28 @@ export default function FiltersBody({ usersService }: {
           <TextFilter prop="address" usersService={usersService} />
         </div>
         <div className={cssClasses.CELL}>
-          <CompanyDropdown
-            companies={usersService.companies}
-            startValue={null}
-            includeDefault={true}
-            checkboxBehavior={getCompanyDropdownFilterBehavior}
-            $init={initAsCompanyFilter(usersService)}
-          />
+          {makeDeactivable(
+            <CompanyDropdown
+              companies={usersService.companies}
+              startValue={null}
+              includeDefault={true}
+              checkboxBehavior={getCompanyDropdownFilterBehavior}
+              $init={initAsCompanyFilter(usersService)}
+            />,
+            usersService
+          )}
         </div>
         <div className={cssClasses.CELL}>
-          <RoleDropdown
-            noSizeText={defaultChoice}
-            roles={usersService.roles}
-            startValue={[defaultChoice]}
-            includeDefault={true}
-            $init={initializeAsRoleFilter(usersService)}
-          />
+          {makeDeactivable(
+            <RoleDropdown
+              noSizeText={defaultChoice}
+              roles={usersService.roles}
+              startValue={[defaultChoice]}
+              includeDefault={true}
+              $init={initializeAsRoleFilter(usersService)}
+            />,
+            usersService
+          )}
         </div>
         <div className={cssClasses.CELL}>
           <UnsetFiltersButton usersService={usersService} />

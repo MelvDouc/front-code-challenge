@@ -57,3 +57,12 @@ export function initializeAsFilter<T>(usersService: UsersService, getFilter: (se
     });
   };
 }
+
+export function makeDeactivable(dropdown: HTMLElement, usersService: UsersService): HTMLElement {
+  const valueElement = dropdown.querySelector(`.${cssClasses.DROPDOWN_VALUE}`) as HTMLElement;
+  const clickHandler = valueElement.onclick;
+  usersService.onRowEditing((id) => {
+    valueElement.onclick = (id !== null) ? null : clickHandler;
+  });
+  return dropdown;
+} 

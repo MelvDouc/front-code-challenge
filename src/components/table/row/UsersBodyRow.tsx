@@ -52,6 +52,9 @@ function getRowInitializer(editModeObs: Observable<EditMode>, userObs: Observabl
     editModeObs.subscribe((editMode) => {
       switch (editMode) {
         case EditMode.EDIT:
+          if (usersService.getEditedRowId() !== null)
+            return;
+          usersService.setEditedRowId(userObs.getValue().id);
           editRow = (<EditRow
             userObs={userObs}
             editModeObs={editModeObs}
@@ -63,6 +66,7 @@ function getRowInitializer(editModeObs: Observable<EditMode>, userObs: Observabl
         case EditMode.VALIDATE:
         case EditMode.CANCEL:
           if (editRow) {
+            usersService.setEditedRowId(null);
             editRow.replaceWith(row);
             editRow = null;
           }

@@ -17,6 +17,7 @@ export default function TextFilter({ prop, usersService }: {
       }}
       $init={(element) => {
         usersService.onFiltersCleared(() => element.value = "");
+        usersService.onRowEditing((id) => element.disabled = (id !== null));
       }}
     />
   );

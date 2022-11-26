@@ -6,6 +6,7 @@ export default class UsersService {
   private readonly filtersService = new FiltersService();
   private readonly usersObs: Observable<User[]>;
   private readonly sortedIdsObs = new Observable<string[]>();
+  private editedRowIdObs: Observable<string | null> = new Observable(null);
   public roles: Role[];
   public companies: Company[];
 
@@ -85,5 +86,17 @@ export default class UsersService {
       if (!filters.size)
         subscription(filters);
     });
+  }
+
+  public onRowEditing(subscription: (id: string | null) => void): void {
+    this.editedRowIdObs.subscribe(subscription);
+  }
+
+  public getEditedRowId(): string | null {
+    return this.editedRowIdObs.getValue();
+  }
+
+  public setEditedRowId(id: string | null): void {
+    this.editedRowIdObs.setValue(id);
   }
 }

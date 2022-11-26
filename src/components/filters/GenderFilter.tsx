@@ -20,6 +20,7 @@ export default function GenderFilter({ usersService }: {
       oninput={handleInput}
       $init={(select) => {
         usersService.onFiltersCleared(() => select.value = defaultChoice);
+        usersService.onRowEditing((id) => select.disabled = (id !== null));
       }}
     >
       {[defaultChoice, Gender.MALE, Gender.FEMALE].map((gender) => (
