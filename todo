@@ -1,0 +1,16 @@
+[X] Make user rows editable.
+[ ] When editing, replace every cell in the row with a form control.
+[X] When editing, every company can be selected.
+[X] When editing, only "Male" or "Female" can be chosen as gender.
+[ ] When saving changes, the changes must saved to the back end.
+[X] When cancelling changes, the row must return to its initial state.
+[ ] Only one row can be edited at a time.
+[ ] When editing, table filters must be disabled.
+[X] Text filter values must be trimmed and case-insensitive.
+[X] Sort users in ascending order on first header click.
+[X] Sort users in descending order on second header click.
+[X] Sort users back in their original order on third header click.
+[X] Implement recursive company select.
+[ ] Update filter choices based on users in current filter.
+[X] Reset all filters when clicking X button in filters row.
+[ ] Implement history.
