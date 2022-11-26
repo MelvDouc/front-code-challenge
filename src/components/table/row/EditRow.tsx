@@ -14,7 +14,7 @@ export default function EditRow({ userObs, editModeObs, roles, companies }: {
   const user = userObs.getValue();
 
   return (
-    <div classNames={[cssClasses.ROW, "edit-row"]}>
+    <div classNames={[cssClasses.ROW]}>
       <div className={cssClasses.CELL}>
         <input type="text" $init={editor("name")} />
       </div>

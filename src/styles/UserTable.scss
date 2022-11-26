@@ -32,13 +32,6 @@
   .row {
     display: grid;
     grid-template-columns: 11% 16% 7.5% 35% 12% 11% 7.5%;
-    position: relative;
-
-    .edit-row {
-      width: 100%;
-      position: absolute;
-      background-color: white;
-    }
   }
 
   .row:first-child,

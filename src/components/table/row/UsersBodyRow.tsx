@@ -58,12 +58,12 @@ function getRowInitializer(editModeObs: Observable<EditMode>, userObs: Observabl
             roles={usersService.roles}
             companies={usersService.companies}
           />);
-          row.appendChild(editRow!);
+          row.replaceWith(editRow!);
           break;
         case EditMode.VALIDATE:
         case EditMode.CANCEL:
           if (editRow) {
-            editRow.remove();
+            editRow.replaceWith(row);
             editRow = null;
           }
       }

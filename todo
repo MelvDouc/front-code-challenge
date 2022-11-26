@@ -1,5 +1,5 @@
 [X] Make user rows editable.
-[ ] When editing, replace every cell in the row with a form control.
+[X] When editing, replace every cell in the row with a form control.
 [X] When editing, every company can be selected.
 [X] When editing, only "Male" or "Female" can be chosen as gender.
 [ ] When saving changes, the changes must saved to the back end.
