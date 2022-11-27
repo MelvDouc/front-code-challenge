@@ -3,6 +3,7 @@ import GenderFilter from "../filters/GenderFilter.jsx";
 import TextFilter from "../filters/TextFilter.jsx";
 import UnsetFiltersButton from "../filters/UnsetFiltersButton.jsx";
 import CompanyDropdownFilter from "../dropdowns/company/CompanyDropdownFilter.jsx";
+import RoleDropdownFilter from "../dropdowns/role/RoleDropdownFilter.jsx";
 
 export default function FiltersBody({ usersService }: {
   usersService: UsersService;
@@ -26,7 +27,7 @@ export default function FiltersBody({ usersService }: {
           <CompanyDropdownFilter usersService={usersService} />
         </div>
         <div className={cssClasses.CELL}>
-
+          <RoleDropdownFilter usersService={usersService} />
         </div>
         <div className={cssClasses.CELL}>
           <UnsetFiltersButton usersService={usersService} />
