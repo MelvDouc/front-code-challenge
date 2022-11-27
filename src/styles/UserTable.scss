@@ -7,6 +7,7 @@
   .tbody {
     &.filters-tbody {
       height: 3em;
+      min-height: 3em;
       background-color: rgb(237, 237, 243);
 
       .row {

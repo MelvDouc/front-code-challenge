@@ -1,8 +1,8 @@
 import cssClasses from "src/constants/css-classes.js";
 import { EditMode, Gender } from "src/constants/enums.js";
-import RoleDropdown, { initAsRoleEditor } from "src/components/dropdowns/role/RoleDropdown.jsx";
 import RowButton from "./RowButton.jsx";
 import CompanyDropdownEditor from "../../dropdowns/company/CompanyDropdownEditor.jsx";
+import RoleDropdownEditor from "../../dropdowns/role/RoleDropdownEditor.jsx";
 
 export default function EditRow({ userObs, editModeObs, roles, companies }: {
   roles: Role[];
@@ -39,12 +39,10 @@ export default function EditRow({ userObs, editModeObs, roles, companies }: {
         />
       </div>
       <div className={cssClasses.CELL}>
-        <RoleDropdown
-          includeDefault={false}
-          noSizeText=""
-          startValue={user.roles}
+        <RoleDropdownEditor
+          editModeObs={editModeObs}
+          userObs={userObs}
           roles={roles}
-          $init={initAsRoleEditor(userObs, editModeObs)}
         />
       </div>
       <div className={cssClasses.CELL}>

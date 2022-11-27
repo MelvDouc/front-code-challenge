@@ -1,7 +1,6 @@
 import { Observable } from "reactfree-jsx";
 import { EditMode } from "../../../constants/enums.js";
 import Dropdown from "../Dropdown.jsx";
-import CompanyTag from "./CompanyTag.jsx";
 import { getCompanyCheckboxes } from "./helpers.jsx";
 
 export default function CompanyDropdownEditor({ userObs, editModeObs, companies }: {
@@ -10,7 +9,7 @@ export default function CompanyDropdownEditor({ userObs, editModeObs, companies 
   companies: Company[];
 }) {
   const startValue = userObs.getValue().company;
-  const companyObs = new Observable<string | null>(startValue);
+  const companyObs = new Observable<string>(startValue);
 
   const $init = (input: HTMLInputElement, companyName: string) => {
     companyObs.subscribe((value) => {
@@ -20,7 +19,7 @@ export default function CompanyDropdownEditor({ userObs, editModeObs, companies 
     });
   };
   const handleInput = (companyName: string) => {
-    companyObs.updateValue((value) => (value === companyName) ? null : companyName);
+    companyObs.updateValue(() => companyName);
   };
 
   editModeObs.subscribe((value) => {
@@ -44,13 +43,7 @@ export default function CompanyDropdownEditor({ userObs, editModeObs, companies 
       $init={() => { }}
       handleView={(element) => {
         companyObs.subscribe((companyName) => {
-          if (!companyName) {
-            element.innerHTML = "";
-            return;
-          }
-          element.appendChild(
-            <CompanyTag companyName={companyName} removeFn={() => companyObs.setValue(null)} />
-          );
+          element.innerHTML = companyName;
         });
       }}
       startValue={startValue}
