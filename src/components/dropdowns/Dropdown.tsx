@@ -41,23 +41,6 @@ export function getCheckmarkFixer<T>(obs: Observable<Set<T>>) {
   };
 }
 
-export function initializeAsFilter<T>(usersService: UsersService, getFilter: (set: Set<T>) => UserFilter | null) {
-  const key = Symbol();
-
-  return (obs: Observable<Set<T>>) => {
-    usersService.onFiltersCleared(() => {
-      if (obs.getValue().size)
-        obs.updateValue((set) => (set.clear(), set));
-    });
-    obs.subscribe((set) => {
-      const filter = getFilter(set);
-      (filter)
-        ? usersService.setFilter(key, filter)
-        : usersService.unsetFilter(key);
-    });
-  };
-}
-
 export function makeDeactivable(dropdown: HTMLElement, usersService: UsersService): HTMLElement {
   const valueElement = dropdown.querySelector(`.${cssClasses.DROPDOWN_VALUE}`) as HTMLElement;
   const clickHandler = valueElement.onclick;

@@ -4,8 +4,8 @@ import GenderFilter from "../filters/GenderFilter.jsx";
 import TextFilter from "../filters/TextFilter.jsx";
 import UnsetFiltersButton from "../filters/UnsetFiltersButton.jsx";
 import { defaultChoice } from "../../constants/misc.js";
-import CompanyDropdown, { getCompanyDropdownFilterBehavior, initAsCompanyFilter } from "src/components/dropdowns/company/CompanyDropdown.jsx";
 import { makeDeactivable } from "../dropdowns/Dropdown.jsx";
+import CompanyDropdownFilter from "../dropdowns/company/CompanyDropdownFilter.jsx";
 
 export default function FiltersBody({ usersService }: {
   usersService: UsersService;
@@ -26,16 +26,7 @@ export default function FiltersBody({ usersService }: {
           <TextFilter prop="address" usersService={usersService} />
         </div>
         <div className={cssClasses.CELL}>
-          {makeDeactivable(
-            <CompanyDropdown
-              companies={usersService.companies}
-              startValue={null}
-              includeDefault={true}
-              checkboxBehavior={getCompanyDropdownFilterBehavior}
-              $init={initAsCompanyFilter(usersService)}
-            />,
-            usersService
-          )}
+          <CompanyDropdownFilter usersService={usersService} />
         </div>
         <div className={cssClasses.CELL}>
           {makeDeactivable(

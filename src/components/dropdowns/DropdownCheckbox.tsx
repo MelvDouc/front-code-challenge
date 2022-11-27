@@ -5,7 +5,7 @@ export default function DropdownCheckbox<T>({ checked, value, indentation, oninp
   value: T;
   indentation?: number;
   oninput: () => void;
-  $init: (input: HTMLInputElement) => void;
+  $init?: (input: HTMLInputElement) => void;
 }) {
   return (
     <label classNames={[cssClasses.CHECKBOX, `mis-${indentation ?? 0}`]}>
@@ -13,7 +13,7 @@ export default function DropdownCheckbox<T>({ checked, value, indentation, oninp
         type="checkbox"
         checked={checked}
         oninput={oninput}
-        $init={$init}
+        $init={$init ? $init : () => { }}
       />
       <span>{value}</span>
     </label>
