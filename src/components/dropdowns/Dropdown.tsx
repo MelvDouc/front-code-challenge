@@ -1,6 +1,31 @@
 import { Observable } from "reactfree-jsx";
 import cssClasses from "src/constants/css-classes.js";
 
+export class _Dropdown extends HTMLElement {
+  constructor({ displayObs }: {
+    displayObs: Observable<string | Node | string[] | Node[]>;
+  }) {
+    super();
+    const visibilityObs = new Observable(false);
+
+    this.append(
+      <section className={cssClasses.DROPDOWN_VALUE}>{displayObs}</section>,
+      <section
+        className={cssClasses.DROPDOWN_CHOICES}
+        onclick={() => visibilityObs.updateValue((prev) => !prev)}
+      ></section>
+    );
+  }
+
+  get disabled() {
+    return false;
+  }
+
+  // set disabled(value: boolean) { }
+}
+
+customElements.define("app-dropdown", _Dropdown);
+
 export default function Dropdown({ children, $init, handleView, startValue }: {
   children?: (Node | string)[];
   startValue: any;
